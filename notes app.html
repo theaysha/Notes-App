@@ -115,6 +115,8 @@
         let btn2 = document.getElementById("btn2");
         let taskList = document.getElementById("taskList");
 
+        taskList.innerHTML = localStorage.getItem("notes") || "";
+
         let currentTask = null;
 
         btn1.addEventListener("click", () => {
@@ -137,6 +139,8 @@
             });
 
             taskList.appendChild(div);
+
+             localStorage.setItem("notes", taskList.innerHTML);
             txt.value = "";
         });
 
@@ -144,6 +148,8 @@
             if (currentTask) {
                 taskList.removeChild(currentTask);
                 currentTask = null;
+
+                localStorage.setItem("notes", taskList.innerHTML);
             }
         });
     </script>
@@ -152,3 +158,4 @@
 
 
 </html>
+
